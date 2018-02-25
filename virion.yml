@@ -2,5 +2,5 @@ name: polyfill-mbstring
 description: Symfony polyfill for the Mbstring extension
 version: 1.7.0
 antigen: Symfony\Polyfill\Mbstring
-php: >=5.3.3
+php: [5.6, 7.0, 7.1, 7.2]
 authors: [Nicolas Grekas, Symfony Community, JackNoordhuis]
