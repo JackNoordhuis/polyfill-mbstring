@@ -68,6 +68,8 @@ final class Mbstring
 {
     const MB_CASE_FOLD = PHP_INT_MAX;
 
+    private static $initalised = false;
+
     private static $encodingList = array('ASCII', 'UTF-8');
     private static $language = 'neutral';
     private static $internalEncoding = 'UTF-8';
@@ -75,6 +77,20 @@ final class Mbstring
         array('µ','ſ',"\xCD\x85",'ς',"\xCF\x90","\xCF\x91","\xCF\x95","\xCF\x96","\xCF\xB0","\xCF\xB1","\xCF\xB5","\xE1\xBA\x9B","\xE1\xBE\xBE"),
         array('μ','s','ι',       'σ','β',       'θ',       'φ',       'π',       'κ',       'ρ',       'ε',       "\xE1\xB9\xA1",'ι'),
     );
+
+    /**
+     * Load the bootstrap file into the autoloader to define the
+     * constants and functions in the global namespace
+     */
+    public static function mb_init()
+    {
+        if (!static::$initalised) {
+            if (file_exists($file = __DIR__ . "/bootstrap.php")) {
+                static::$initalised = true;
+                require_once $file;
+            }
+        }
+    }
 
     public static function mb_convert_encoding($s, $toEncoding, $fromEncoding = null)
     {
