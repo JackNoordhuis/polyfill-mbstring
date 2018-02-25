@@ -1,6 +1,6 @@
 name: polyfill-mbstring
 description: Symfony polyfill for the Mbstring extension
 version: 1.7.0
-antigen: Carbon
+antigen: Symfony\Polyfill\Mbstring
 php: >=5.3.3
 authors: [Nicolas Grekas, Symfony Community, JackNoordhuis]
